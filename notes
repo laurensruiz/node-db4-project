@@ -1,0 +1,24 @@
+"scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "reset": "npm run rollback && npm run migrate && npm run seed"
+  }
+
+  terminal: 
+
+  //dev dependencies (you can also write in one line)
+npm i -D knex-cleaner // dont truncate manually since we have more than one table
+
+npm i -D nodemon 
+
+npm i -D eslint
+
+
+//dependencies 
+
+npm i express sqlite3 knex
+
+npm i dotenv
