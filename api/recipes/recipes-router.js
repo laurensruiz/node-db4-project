@@ -1,9 +1,15 @@
 const router = require('express').Router()
 
-//catchall
-router.use('*', (req, res) => {
-    res.json({api:'up'})
-})
+const Recipe = require('./recipes-model')
+
+router.get('/:recipe_id', (req, res, next) => {
+    Recipe.getRecipeById(req.params.recipe_id)
+      .then(data => {
+        res.status(200).json(data)
+      })
+      .catch(next)
+  })
+
 
 // error handling
 router.use((err, req, res, next) => { // eslint-disable-line
