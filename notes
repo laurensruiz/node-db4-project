@@ -26,3 +26,11 @@ npm i dotenv
 after making knex file, db-config and data folder
 
 npx knex migrate:make initial-migration
+
+to test if migrate code works :
+
+npm run migrate
+
+then
+
+npm run rollback
