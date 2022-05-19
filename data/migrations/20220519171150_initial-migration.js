@@ -7,15 +7,13 @@
 exports.up = async function(knex) {
   await knex.schema
     .createTable('recipes', table => {
-        //makes columns
-        table.increments('recipe_id') 
-        //the data in the column
+        table.increments('recipe_id')
         table.string('recipe_name', 200).notNullable().unique
 
     })
     .createTable('ingredients', table => {
-        table.increments('ingredients_id')
-        table.string('ingredients_name', 200).notNullable().unique
+        table.increments('ingredient_id')
+        table.string('ingredient_name', 200).notNullable().unique
         table.string('ingredient_unit', 50)
     })
     .createTable('steps', table => {
@@ -31,12 +29,9 @@ exports.up = async function(knex) {
             .onDelete('RESTRICT')
             .onUpdate('RESTRICT')
     })
-    //step ingredients because proj wants us to see ingredients for that particular step not the recipe, check relationships. BUt since steps is already connected to recipe so it can still refer to it
-
-    //remember it references steps and ingredients
     .createTable('step_ingredients', table => {
         //primary key
-        table.increments('step_ingredients_id')
+        table.increments('step_ingredient_id')
         table.float('quantity').notNullable
         //foreign key references the step
         table.integer('step_id')
@@ -53,7 +48,6 @@ exports.up = async function(knex) {
             .inTable('ingredients')
             .onDelete('RESTRICT')
             .onUpdate('RESTRICT')
-           
     })
 };
 
@@ -71,3 +65,7 @@ exports.down = async function(knex) {
     .dropTableIfExists('ingredients')
     .dropTableIfExists('recipes')
 };
+
+ //step ingredients because proj wants us to see ingredients for that particular step not the recipe, check relationships. BUt since steps is already connected to recipe so it can still refer to it
+
+    //remember it references steps and ingredients

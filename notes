@@ -39,3 +39,6 @@ when don npm run migrate
 then check database in SQLlite to make sure tables set up properly
 
 make seeds file to mock up data
+
+git diff HEAD 
+to see changes when last working
