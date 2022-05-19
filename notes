@@ -22,3 +22,7 @@ npm i -D eslint
 npm i express sqlite3 knex
 
 npm i dotenv
+
+after making knex file, db-config and data folder
+
+npx knex migrate:make initial-migration
